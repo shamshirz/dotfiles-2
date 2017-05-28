@@ -1,0 +1,117 @@
+" Themes and colors
+set background=dark
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+colorscheme solarized
+
+" RSpec.vim with Zeus and Dispatch
+let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
+
+set scrolloff=4    " Keep at least 4 lines below/above cursor
+set nocompatible   " Don't maintain compatibilty with Vi
+
+" Performance
+set lazyredraw
+set ttyfast
+
+" Default focused
+set relativenumber
+set cursorline
+set cursorcolumn
+
+" Focused vs unfocused splits
+autocmd WinEnter * set relativenumber
+autocmd WinLeave * set norelativenumber
+
+autocmd WinEnter * set cursorline
+autocmd WinEnter * set cursorcolumn
+autocmd WinLeave * set nocursorline
+autocmd WinLeave * set nocursorcolumn
+
+" Superior home/end mappings
+map 0 ^
+map - $
+" Never use escape
+imap jk <esc>
+imap kj <esc>
+
+" RSpec.vim mappings
+" NOTE: Overwrites vim-test mappings in vimrc
+map <leader>t :call RunCurrentSpecFile()<CR>
+map <leader>s :call RunNearestSpec()<CR>
+map <leader>l :call RunLastSpec()<CR>
+map <leader>a :call RunAllSpecs()<CR>
+
+" Automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" Zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+nmap <leader>so :source $MYVIMRC<cr>
+
+" Change cursor to line when in insert mode
+" For NeoVim
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" For Vim, with tmux + iTerm 2 only
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+" Match to beginning and end of blocks with %
+runtime macros/matchit.vim
+
+set foldmethod=syntax " Fold using the wisdom of vim.ruby or similar
+set nofoldenable      " Temporarily disable folding when file is first opened
+
+" Bind `q` to close the buffer for help files
+autocmd Filetype help nnoremap <buffer> q :q<CR>
+
+" Run NeoMake on read and write operations
+autocmd! BufReadPost,BufWritePost * Neomake
+
+" Make SignColumn background color the same as the default
+highlight clear SignColumn
+
+" Disable inherited syntastic
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": [],
+  \ "passive_filetypes": [] }
+
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
+
+" Smart wrapping/indentation
+set breakindent
+
+" Explore the directory of the current file
+nnoremap <leader>e :Dirvish %<CR>
+" Enable Vim Fugitive in dirvish buffers
+autocmd FileType dirvish call fugitive#detect(@%)
+
+" Use ripgrep for ludicrous speed! Got this from
+" https://elliotekj.com/2016/11/22/setup-ctrlp-to-use-ripgrep-in-vim/
+set grepprg=rg\ --color=never
+
+let g:ackprg = 'rg --vimgrep --smart-case'
+nnoremap \ :Ack!<SPACE>
+nnoremap <C-p> :Files<CR>
+
+set wildignore+=*/.git/*,*/tmp/*,*.swp
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Try to improve slowness caused by gitgutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+let g:elm_format_autosave = 1 " Format on saving an Elm file
+let g:elm_setup_keybindings = 0 " Don't use plugin-provided mappings
+
+" Dash.vim
+nmap <silent> <leader>d <Plug>DashSearch

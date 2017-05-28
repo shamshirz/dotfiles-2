@@ -1,0 +1,68 @@
+source ~/dotfiles-local/antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundles <<EOBUNDLES
+  # Ruby bundles
+  bundler
+  git
+  ruby
+  rake
+  rbenv
+  zeus
+
+  # Mac OS bundles
+  brew
+
+  # Build tool bundles
+  git
+  heroku
+
+  # Other bundles
+  jump
+EOBUNDLES
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme agnoster
+
+# Tell antigen that you're done.
+antigen apply
+
+# Tmuxinator
+source ~/.bin/tmuxinator.zsh
+
+# Use nvim if it's installed
+if type nvim > /dev/null 2>&1; then
+  alias vim=nvim
+  alias vi=nvim
+  alias v=nvim
+fi
+
+# Set keyrepeat values. Ideally this only needs to be run upon setting up a new
+# machine...
+defaults write -g InitialKeyRepeat -int 13 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+# Set keys to repeat in anything other than the terminal (which works without
+# this setting for some reason?)
+# https://discussions.apple.com/thread/5038771?tstart=0
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# fzf (https://github.com/junegunn/fzf)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Never leave tmux
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+# NOTE: I think this needs to be called after everything else!
+ensure_tmux_is_running

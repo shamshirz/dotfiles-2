@@ -1,0 +1,142 @@
+[alias]
+  a = add
+  aa = add --all
+  apa = add --patch
+  au = add --update
+
+  b = branch
+  ba = branch -a
+  bd = branch -d
+  bl = blame -b -w
+  bnm = branch --no-merged
+  bpurge = "!git branch --merged master | egrep -v \"(^\\*|  master$)\" > /tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d < /tmp/merged-branches"
+  br = branch --remote
+  bs = bisect
+  bsb = bisect bad
+  bsg = bisect good
+  bsr = bisect reset
+  bss = bisect start
+
+  c = commit -v
+  ca = commit -v -a
+  cam = commit -v --amend
+  caam = commit -v -a --amend
+  cnv = commit -v --no-verify
+  cb = checkout -b
+  cf = config --list
+  cl = clone --recursive
+  clean = clean -fd
+  cm = checkout master
+  cd = checkout develop
+  cmsg = commit -m
+  co = checkout
+  com = checkout master
+  coem = checkout eligibility-master
+  count = shortlog -sn
+  cp = cherry-pick
+  cpa = cherry-pick --abort
+  cpc = cherry-pick --continue
+  cs = commit -S
+
+  d = diff
+  dca = diff --cached
+  dm = diff master...HEAD
+  dt = diff-tree --no-commit-id --name-only -r
+  dw = diff --word-diff
+
+  f = fetch
+  fa = fetch --all --prune
+  fo = fetch origin
+  fu = fetch upstream
+
+  ignore = update-index --assume-unchanged
+
+  l = pull
+  lg = log --stat
+  lgp = log --stat -p
+  lgg = log --graph
+  lgga = log --graph --decorate --all
+  lgm = log --graph --max-count=10
+  lo = log --oneline --decorate
+  lol = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  lola = "log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+  log = log --oneline --decorate --graph
+  loga = log --oneline --decorate --graph --all
+
+  m = merge
+  mom = merge origin/master
+  mt = mergetool --no-prompt
+  mtvim = mergetool --no-prompt --tool=vimdiff
+  mum = merge upstream/master
+
+  p = push
+  pp = "!git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`"
+  pd = push --dry-run
+  pu = push upstream
+  pv = push -v
+
+  r = remote
+  ra = remote add
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase -i
+  rbm = rebase master
+  rbs = rebase --skip
+  rh = reset HEAD
+  rhh = reset HEAD --hard
+  rhpc = reset HEAD^
+  rmv = remote rename
+  rrm = remote remove
+  rset = remote set-url
+  ru = reset --
+  rup = remote update
+  rv = remote -v
+
+  sb = status -sb
+  sd = svn dcommit
+  si = submodule init
+  sps = show --pretty=short --show-signature
+  sr = svn rebase
+  ss = status -s
+  st = status
+  sta = stash save
+  staa = stash apply
+  stc = stash clear
+  std = stash drop
+  stl = stash list
+  stp = stash pop
+  sts = stash show --text
+  su = submodule update
+
+  tig = !tig
+  ts = tag -s
+
+  unignore = update-index --no-assume-unchanged
+  up = pull --rebase
+  upv = pull --rebase -v
+  lum = pull upstream master
+
+  vdf = difftool
+
+  wch = whatchanged -p --abbrev-commit --pretty=medium
+  wip = "!git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m '--wip-- [no ci]'"
+[core]
+  editor = nvim
+  pager = "diff-so-fancy | less --tabs=4 -RFX"
+[diff]
+  tool = vimdiff
+[push]
+  default = simple
+[merge]
+  ff = true
+[user]
+  name = RJ Dellecese
+  email = rj.dellecese@annkissam.com
+[gitsh]
+  noGreeting = true
+  defaultCommand = status --short --branch
+[gitsh "color"]
+  default = cyan
+  untracked = yellow
+  modified = red

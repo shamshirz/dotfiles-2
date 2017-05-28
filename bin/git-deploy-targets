@@ -1,0 +1,89 @@
+#!/usr/bin/ruby
+
+require 'fileutils'
+
+# Usage: git-deploy-targets <client>
+#
+# Prints the deploy targets for a given client.
+#
+class DeployTargetGetter
+  def call
+    client = ARGV[0]
+    deploy_file_path = "#{FileUtils.pwd}/clients/#{client}/config/deploy.rb"
+    current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
+
+    validate_number_of_args
+    validate_current_branch(current_branch)
+    validate_deploy_file_path(deploy_file_path)
+
+    print_deploy_targets(deploy_file_path)
+  end
+
+  private
+
+  def print_deploy_targets(deploy_file_path)
+    deploy_targets = []
+
+    File.open(deploy_file_path, 'r') do |deploy_file|
+      current_nesting_level = []
+      deploy_file.each_line do |line|
+        current_nesting_level =
+          set_current_nesting_level(line, current_nesting_level)
+        deploy_target = collect_deploy_target(line, current_nesting_level)
+        deploy_targets << deploy_target unless deploy_target.nil?
+      end
+    end
+
+    print_formatted_deploy_targets(deploy_targets)
+  end
+
+  def print_formatted_deploy_targets(deploy_targets)
+    max_nesting_level_width =
+      deploy_targets.map do |deploy_target|
+        deploy_target[0].size
+      end.max
+
+    deploy_targets.each do |nesting_level, target|
+      whitespace_width = max_nesting_level_width - nesting_level.size + 1
+      puts nesting_level << ' ' * whitespace_width << target
+    end
+  end
+
+  def set_current_nesting_level(line, current_nesting_level)
+    namespace_match = line.scan(/(?<=namespace :)(.*)(?= do)/)[0]
+    task_match = line.scan(/(?<=task :)(.*)(?= do)/)[0]
+    end_match = line.scan(/(. )end$/)[0]
+    current_nesting_level << namespace_match[0] unless namespace_match.nil?
+    current_nesting_level << task_match[0] unless task_match.nil?
+    current_nesting_level.pop unless end_match.nil?
+    current_nesting_level
+  end
+
+  def collect_deploy_target(line, current_nesting_level)
+    branch_match = line.scan(/(?<=set :branch, ('|"))(.*)(?=('|"))/)[0]
+    return if branch_match.nil?
+    [current_nesting_level.join(':'), branch_match[1]]
+  end
+
+  def validate_number_of_args
+    return if ARGV.size == 1
+    warn 'Invalid number of arguments. This script requires one argument: ' \
+         'the client name.'
+    exit(64)
+  end
+
+  def validate_current_branch(current_branch)
+    return if ['master', 'eligibility-master'].include? current_branch
+    warn 'Invalid branch. Please run this from the master or ' \
+         'eligibility-master branch.'
+    exit(64)
+  end
+
+  def validate_deploy_file_path(deploy_file_path)
+    return if File.file?(deploy_file_path)
+    warn 'Invalid client name. It seems this client does not exist.'
+    exit(1)
+  end
+end
+
+DeployTargetGetter.new.call

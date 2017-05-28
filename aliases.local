@@ -1,0 +1,17 @@
+# Find out where new aliases are needed
+alias mostused='history | awk '"'"'{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'"'"' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
+
+# Learn about aliases provided by zsh plugins
+alias al='alias | grep'
+
+alias sshconfig='v ~/.ssh/config'
+
+# MySQL server aliases
+alias mss='mysql.server start'
+alias msr='mysql.server restart'
+alias msst='mysql.server stop'
+
+alias zdbrc='zeus rake db:recreate'
+
+# Use hub with gitsh
+alias gitsh='gitsh --git $(which hub)'
