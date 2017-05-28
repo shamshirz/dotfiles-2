@@ -52,12 +52,9 @@ nnoremap <leader>= :wincmd =<cr>
 nmap <leader>so :source $MYVIMRC<cr>
 
 " Change cursor to line when in insert mode
-" For NeoVim
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" For Vim, with tmux + iTerm 2 only
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " Match to beginning and end of blocks with %
 runtime macros/matchit.vim
