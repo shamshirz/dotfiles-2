@@ -7,7 +7,6 @@ antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
   # Ruby bundles
   bundler
-  git
   ruby
   rake
   rbenv
@@ -17,7 +16,6 @@ antigen bundles <<EOBUNDLES
   brew
 
   # Build tool bundles
-  git
   heroku
 
   # Other bundles
