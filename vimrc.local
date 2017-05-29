@@ -98,6 +98,9 @@ let g:ackprg = 'rg --vimgrep --smart-case'
 nnoremap \ :Ack!<SPACE>
 nnoremap <C-p> :Files<CR>
 
+" Enable command history, as with Ctrl-P Vim plugin
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 set wildignore+=*/.git/*,*/tmp/*,*.swp
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
