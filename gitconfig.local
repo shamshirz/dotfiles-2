@@ -1,6 +1,7 @@
 [alias]
   a = add
   aa = add --all
+  aan = add --all -N
   apa = add --patch
   au = add --update
 
