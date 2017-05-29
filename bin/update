@@ -1,0 +1,33 @@
+#!/bin/sh
+
+set -e
+
+echo_update() {
+  echo "--> Updating $1..."
+}
+
+if [ ! -e ~/dotfiles-local/Brewfile ]; then
+  touch ~/dotfiles-local/Brewfile
+fi
+
+echo_update 'Homebrew packages'
+brew upgrade
+echo "--> Dumping to Brewfile..."
+(cd ~/dotfiles-local && exec brew bundle dump --force)
+
+echo_update 'Ruby gems'
+gem update
+
+# https://stackoverflow.com/a/3452888
+pip_upgrade() {
+  pip$1 list --outdated --format=freeze |
+  grep -v '^\-e' |
+  cut -d = -f 1  |
+  xargs -n1 pip$1 install -U
+}
+
+echo_update 'Python packages'
+pip_upgrade
+for i in {2..3}; do
+  pip_upgrade $i
+done
