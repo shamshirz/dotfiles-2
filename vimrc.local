@@ -110,3 +110,6 @@ nmap <silent> <leader>d <Plug>DashSearch
 
 " Make test commands execute using dispatch.vim
 let test#strategy = "dispatch"
+
+" Allow mouse input for all modes
+set mouse=a
