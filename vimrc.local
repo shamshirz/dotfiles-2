@@ -4,9 +4,6 @@ let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 colorscheme solarized
 
-" RSpec.vim with Zeus and Dispatch
-let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
-
 set scrolloff=4    " Keep at least 4 lines below/above cursor
 set nocompatible   " Don't maintain compatibilty with Vi
 
@@ -34,13 +31,6 @@ map - $
 " Never use escape
 imap jk <esc>
 imap kj <esc>
-
-" RSpec.vim mappings
-" NOTE: Overwrites vim-test mappings in vimrc
-map <leader>t :call RunCurrentSpecFile()<CR>
-map <leader>s :call RunNearestSpec()<CR>
-map <leader>l :call RunLastSpec()<CR>
-map <leader>a :call RunAllSpecs()<CR>
 
 " Automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -117,3 +107,6 @@ let g:elm_setup_keybindings = 0 " Don't use plugin-provided mappings
 
 " Dash.vim
 nmap <silent> <leader>d <Plug>DashSearch
+
+" Make test commands execute using dispatch.vim
+let test#strategy = "dispatch"
