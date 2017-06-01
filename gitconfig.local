@@ -10,7 +10,7 @@
   bd = branch -d
   bl = blame -b -w
   bnm = branch --no-merged
-  bpurge = "!git branch --merged master | egrep -v \"(^\\*|  master$)\" > /tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d < /tmp/merged-branches"
+  bpurge = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
   br = branch --remote
   bs = bisect
   bsb = bisect bad
