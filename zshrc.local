@@ -42,7 +42,7 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # Set keyrepeat values. Ideally this only needs to be run upon setting up a new
-# machine...
+# machine... or only once upon each login?
 defaults write -g InitialKeyRepeat -int 13 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 # Set keys to repeat in anything other than the terminal (which works without
