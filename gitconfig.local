@@ -82,7 +82,9 @@
   rba = rebase --abort
   rbc = rebase --continue
   rbi = rebase -i
+  rbiom = rebase -i origin/master
   rbm = rebase master
+  rbom = rebase origin/master
   rbs = rebase --skip
   rh = reset HEAD
   rhh = reset HEAD --hard
