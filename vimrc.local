@@ -57,9 +57,6 @@ set nofoldenable      " Temporarily disable folding when file is first opened
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<CR>
 
-" Run NeoMake on read and write operations
-autocmd! BufReadPost,BufWritePost * Neomake
-
 " Make SignColumn background color the same as the default
 highlight clear SignColumn
 
@@ -68,9 +65,6 @@ let g:syntastic_mode_map = {
   \ "mode": "passive",
   \ "active_filetypes": [],
   \ "passive_filetypes": [] }
-
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
 
 " Smart wrapping/indentation
 set breakindent
