@@ -113,3 +113,5 @@ let test#strategy = "dispatch"
 
 " Allow mouse input for all modes
 set mouse=a
+
+set inccommand=split
