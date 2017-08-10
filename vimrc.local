@@ -92,10 +92,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Try to improve slowness caused by gitgutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-
 let g:elm_format_autosave = 1 " Format on saving an Elm file
 let g:elm_setup_keybindings = 0 " Don't use plugin-provided mappings
 
@@ -109,3 +105,6 @@ let test#strategy = "dispatch"
 set mouse=a
 
 set inccommand=split
+
+" ALE options
+let g:airline#extensions#ale#enabled = 1
