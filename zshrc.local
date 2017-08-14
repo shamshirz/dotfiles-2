@@ -34,6 +34,10 @@ antigen apply
 # Tmuxinator
 source ~/.bin/tmuxinator.zsh
 
+# Overwrite zsh/configs/editor.zsh in thoughtbot/dotfiles
+export VISUAL=nvim
+export EDITOR=$VISUAL
+
 # Use nvim if it's installed
 if type nvim > /dev/null 2>&1; then
   alias vim=nvim
