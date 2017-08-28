@@ -106,3 +106,6 @@ set inccommand=split
 
 " ALE options
 let g:airline#extensions#ale#enabled = 1
+
+" Clear search highlighting
+nnoremap <Leader>n :noh<CR>
