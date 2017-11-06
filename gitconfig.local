@@ -42,6 +42,7 @@
   d = diff
   dca = diff --cached
   dm = diff master...HEAD
+  dom = diff origin/master...HEAD
   dt = diff-tree --no-commit-id --name-only -r
   dw = diff --word-diff
 
