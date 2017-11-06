@@ -15,7 +15,7 @@ alias mss='mysql.server start'
 alias msr='mysql.server restart'
 alias msst='mysql.server stop'
 
-alias zdbrc='zeus rake db:recreate'
+alias zdbrc='zeus rake db:recreate db:test:prepare'
 
 # Use hub with gitsh
 alias gitsh='gitsh --git $(which hub)'
