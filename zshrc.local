@@ -62,6 +62,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Hopefully be able to replace rbenv with asdf by December 8, 2017
 export SILENCE_RBENV_DEPRECATION=1
 
+# https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
 # Never leave tmux
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
