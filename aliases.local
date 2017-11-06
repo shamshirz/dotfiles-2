@@ -4,6 +4,7 @@ alias mostused='history | awk '"'"'{CMD[$2]++;count++;}END { for (a in CMD)print
 # Learn about aliases provided by zsh plugins
 alias al='alias | grep'
 
+alias ls=exa
 alias ll='exa -al --git'
 alias l=ll
 
