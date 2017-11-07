@@ -64,6 +64,10 @@ export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 # https://github.com/tmuxinator/tmuxinator/pull/511
 export TMUXINATOR_CONFIG='~/dotfiles-local'
 
+# https://github.com/pstadler/keybase-gpg-github#optional-setting-up-tty
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # Never leave tmux
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
