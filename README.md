@@ -9,7 +9,9 @@
 
 ### Unordered
 
-- Install a Powerline font. I use "14pt Meslo LG M Regular for Powerline", downloadable [here](https://gitbhub.com/powerline/fonts) (follow the Quick Install instructions).
+- Install a Powerline font. I use "14pt Meslo LG M Regular for Powerline", downloadable [here](https://gitbhub.com/powerline/fonts) (follow the Quick Install instructions) and set it in iTerm2.
+- Under the General tab of your iTerm2 settings, set "Load preferences from a custom folder or URL" to `~/dotfiles-local`.
+- `gem install tmuxinator`
 - Download Tmuxinator zsh autocompletions:
 ```sh
 curl --remote-name https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh
