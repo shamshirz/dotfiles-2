@@ -13,8 +13,7 @@
   bpurge = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
   br = branch --remote
   bs = bisect
-  bsb = bisect bad
-  bsg = bisect good
+  bsb = bisect bad bsg = bisect good
   bsr = bisect reset
   bss = bisect start
 
@@ -32,9 +31,7 @@
   cmsg = commit -m
   co = checkout
   com = checkout master
-  coem = checkout eligibility-master
-  count = shortlog -sn
-  cp = cherry-pick
+  coem = checkout eligibility-master count = shortlog -sn cp = cherry-pick
   cpa = cherry-pick --abort
   cpc = cherry-pick --continue
   cs = commit -S
@@ -130,6 +127,8 @@
   pager = "diff-so-fancy | less --tabs=4 -RFX"
 [diff]
   tool = vimdiff
+[commit]
+  gpgsign = true
 [push]
   default = simple
 [merge]
@@ -137,6 +136,7 @@
 [user]
   name = RJ Dellecese
   email = rj.dellecese@annkissam.com
+  signingkey = 87BF99275C7F59C3
 [gitsh]
   noGreeting = true
   defaultCommand = status --short --branch
