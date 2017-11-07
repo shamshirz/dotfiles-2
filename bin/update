@@ -1,6 +1,4 @@
-#!/bin/sh
-
-set -e
+#!/bin/zsh
 
 echo_update() {
   echo "--> Updating $1..."
@@ -10,13 +8,25 @@ if [ ! -e ~/dotfiles-local/Brewfile ]; then
   touch ~/dotfiles-local/Brewfile
 fi
 
+echo_update 'Antigen'
+(cd ~/dotfiles-local/antigen && exec git pull)
+
 echo_update 'Homebrew packages'
 brew upgrade
 echo "--> Dumping to Brewfile..."
 (cd ~/dotfiles-local && exec brew bundle dump --force)
 
-echo_update 'Ruby gems'
-gem update
+echo_update 'asdf'
+asdf update
+
+declare -a gems=('bundler' 'tmuxinator' 'zeus')
+echo_update "Ruby gems ($gems)"
+asdf list ruby $1 | while read ruby_version; do
+  echo_update "Ruby $ruby_version gems"
+  for gem in $gems; do
+    $(asdf where ruby $ruby_version)/bin/gem install $gem
+  done
+done
 
 # https://stackoverflow.com/a/3452888
 pip_upgrade() {
@@ -27,7 +37,7 @@ pip_upgrade() {
 }
 
 echo_update 'Python packages'
-pip_upgrade
 for i in {2..3}; do
+  echo_update "Python $i packages"
   pip_upgrade $i
 done
