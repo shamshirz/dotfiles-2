@@ -66,8 +66,7 @@ export SILENCE_RBENV_DEPRECATION=1
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 # https://github.com/tmuxinator/tmuxinator/pull/511
-# https://specifications.freedesktop.org/basedir-spec/latest/ar01s02.html
-export XDG_CONFIG_HOME='~/dotfiles-local'
+export TMUXINATOR_CONFIG='~/dotfiles-local'
 
 # Never leave tmux
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
