@@ -1,6 +1,6 @@
-# ~/.tmuxinator/Billing-Eligibility-Outline.yml
+# ~/.tmuxinator/billing-eligibility-knowledge.yml
 
-name: Billing-Eligibility-Outline
+name: billing-eligibility-knowledge
 root: ~/code/work/Billing-Eligibility-Outline
 
 # Optional tmux socket
