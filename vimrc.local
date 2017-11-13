@@ -68,6 +68,8 @@ set breakindent
 
 " Explore the directory of the current file
 nnoremap <leader>e :Dirvish %<CR>
+" Explore the project root directory
+nnoremap <leader>E :Dirvish .<CR>
 " Enable Vim Fugitive in dirvish buffers
 autocmd FileType dirvish call fugitive#detect(@%)
 
