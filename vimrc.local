@@ -109,5 +109,8 @@ set inccommand=split
 " ALE options
 let g:airline#extensions#ale#enabled = 1
 
+" Set soft tabs to 4 spaces in Elm buffers
+autocmd FileType elm setlocal tabstop=4 shiftwidth=4
+
 " Clear search highlighting
 nnoremap <Leader>n :noh<CR>
