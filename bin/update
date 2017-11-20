@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 echo_update() {
-  echo "--> Updating $1..."
+  echo "💻  --> Updating $1...\n"
 }
 
 if [ ! -e ~/dotfiles-local/Brewfile ]; then
@@ -13,7 +13,7 @@ echo_update 'Antigen'
 
 echo_update 'Homebrew packages'
 brew upgrade
-echo "--> Dumping to Brewfile..."
+echo "💻  --> Dumping to Brewfile...\n"
 (cd ~/dotfiles-local && exec brew bundle dump --force)
 
 echo_update 'asdf'
