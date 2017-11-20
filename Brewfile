@@ -36,7 +36,6 @@ brew "gdbm"
 brew "gist"
 brew "gnupg"
 brew "go"
-brew "gpg-agent"
 brew "libtool"
 brew "graphviz"
 brew "hub"
@@ -61,7 +60,7 @@ brew "pandoc"
 brew "phantomjs"
 brew "postgresql", restart_service: true
 brew "pwgen"
-brew "qt@5.5"
+brew "qt@5.5", link: true
 brew "reattach-to-user-namespace"
 brew "redis", restart_service: true
 brew "ripgrep"
