@@ -58,6 +58,7 @@ brew "unibilium"
 brew "neovim"
 brew "pandoc"
 brew "phantomjs"
+brew "pinentry-mac"
 brew "postgresql", restart_service: true
 brew "pwgen"
 brew "qt@5.5", link: true
