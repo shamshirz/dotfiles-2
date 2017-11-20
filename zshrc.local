@@ -62,7 +62,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 # https://github.com/tmuxinator/tmuxinator/pull/511
-export TMUXINATOR_CONFIG='~/dotfiles-local'
+export TMUXINATOR_CONFIG=~/dotfiles-local/tmuxinator
 
 # https://github.com/pstadler/keybase-gpg-github#optional-setting-up-tty
 GPG_TTY=$(tty)
