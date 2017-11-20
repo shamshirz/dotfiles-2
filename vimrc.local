@@ -114,3 +114,5 @@ autocmd FileType elm setlocal tabstop=4 shiftwidth=4
 
 " Clear search highlighting
 nnoremap <Leader>n :noh<CR>
+
+let g:rustfmt_autosave = 1

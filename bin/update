@@ -41,3 +41,7 @@ for i in {2..3}; do
   echo_update "Python $i packages"
   pip_upgrade $i
 done
+
+echo_update 'Rust nightly'
+asdf uninstall rust nightly
+asdf install rust nightly
