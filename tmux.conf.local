@@ -57,6 +57,9 @@ set -g default-command "reattach-to-user-namespace -l $SHELL"
 # gitsh "git drawer"
 bind-key g split-window -h -p 50 'gitsh --git $(which hub)'
 
+# Set root directory for session to current pane path
+bind-key e attach-session -c "#{pane_current_path}" \; display-message "Set session path to #{pane_current_path}"
+
 # Unbind default bind key.
 unbind C-b
 # Set prefix to C-s (the default in these dotfiles is to set prefix2 to this.
