@@ -63,6 +63,7 @@
   loga = log --oneline --decorate --graph --all
 
   m = merge
+  ma = merge --abort
   mom = merge origin/master
   mt = mergetool --no-prompt
   mtvim = mergetool --no-prompt --tool=vimdiff
