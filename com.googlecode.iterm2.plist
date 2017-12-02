@@ -139,7 +139,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>316 393 796 473 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 650 527 0 0 1440 877 </string>
+	<string>-227 904 1440 873 -227 900 1920 1057 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1052,7 +1052,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-11-17T23:28:45Z</date>
+	<date>2017-11-27T23:40:08Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -1079,7 +1079,6 @@
 	<integer>10</integer>
 	<key>ToolbeltTools</key>
 	<array>
-		<string>Profiles</string>
 		<string>Paste History</string>
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
