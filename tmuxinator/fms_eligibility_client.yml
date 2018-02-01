@@ -45,5 +45,5 @@ windows:
       layout: even-horizontal
       panes:
         - if [ -e .zeus.sock ]; then rm .zeus.sock && zeus start; else zeus start; fi
-        - sleep 1 && zeus server
+        - sleep 1 && zeus server -p 3005
   # - logs: tail -f log/development.log
