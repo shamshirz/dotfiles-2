@@ -68,6 +68,10 @@ export TMUXINATOR_CONFIG=~/dotfiles-local/tmuxinator
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# Added by asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
 # Never leave tmux
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
