@@ -116,3 +116,7 @@ autocmd FileType elm setlocal tabstop=4 shiftwidth=4
 nnoremap <Leader>n :noh<CR>
 
 let g:rustfmt_autosave = 1
+
+" Use j and k to navigate long wrapped lines as multiple lines
+nnoremap k gk
+nnoremap j gj
