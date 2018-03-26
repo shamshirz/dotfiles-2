@@ -120,3 +120,6 @@ let g:rustfmt_autosave = 1
 " Use j and k to navigate long wrapped lines as multiple lines
 nnoremap k gk
 nnoremap j gj
+
+" Copy to clipboard
+noremap <silent> cp :let @+=expand("%:p")<CR>
