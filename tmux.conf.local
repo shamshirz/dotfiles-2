@@ -55,7 +55,7 @@ set -g default-shell $SHELL
 set -g default-command "reattach-to-user-namespace -l $SHELL"
 
 # gitsh "git drawer"
-bind-key g split-window -h -p 50 'gitsh --git $(which hub)'
+bind-key g split-window -h -p 50 -c '#{pane_current_path}' 'gitsh --git $(which hub)'
 
 # Set root directory for session to current pane path
 bind-key e attach-session -c "#{pane_current_path}" \; display-message "Set session path to #{pane_current_path}"
