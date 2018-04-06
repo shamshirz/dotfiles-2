@@ -64,3 +64,6 @@ bind-key e attach-session -c "#{pane_current_path}" \; display-message "Set sess
 unbind C-b
 # Set prefix to C-s (the default in these dotfiles is to set prefix2 to this.
 set -g prefix C-s
+
+# Use da mouse for scrolling 'n stuff
+set -g mouse on
