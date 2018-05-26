@@ -28,9 +28,6 @@ autocmd WinLeave * set nocursorcolumn
 " Superior home/end mappings
 map 0 ^
 map - $
-" Never use escape
-imap jk <esc>
-imap kj <esc>
 
 " Automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
