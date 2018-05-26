@@ -68,6 +68,13 @@ export TMUXINATOR_CONFIG=~/dotfiles-local/tmuxinator
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# Postgres creds for AK Elixir apps
+export POSTGRES_USER=rjdellecese
+export POSTGRES_PASSWORD=''
+
+# Enable Elixir shell history globally
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Added by asdf
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
