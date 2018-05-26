@@ -122,3 +122,8 @@ nnoremap j gj
 noremap <silent> cp :let @+=expand("%")<CR>
 " Copy absolute file path of current buffer to clipboard
 noremap <silent> cP :let @+=expand("%:p")<CR>
+
+augroup dirvish_config
+  " Maintain fzf Ctrl-P functionality in Dirvish buffers
+  autocmd FileType dirvish nnoremap <silent><buffer> <C-p> :Files<CR>
+augroup END
