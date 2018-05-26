@@ -118,5 +118,7 @@ let g:rustfmt_autosave = 1
 nnoremap k gk
 nnoremap j gj
 
-" Copy to clipboard
-noremap <silent> cp :let @+=expand("%:p")<CR>
+" Copy relative file path of current buffer to clipboard
+noremap <silent> cp :let @+=expand("%")<CR>
+" Copy absolute file path of current buffer to clipboard
+noremap <silent> cP :let @+=expand("%:p")<CR>
