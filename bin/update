@@ -16,8 +16,9 @@ brew upgrade
 echo '💻  --> Dumping to Brewfile...'
 (cd ~/dotfiles-local && exec brew bundle dump --force)
 
-echo_update 'asdf'
+echo_update 'asdf and asdf plugins'
 asdf update
+asdf plugin-update --all
 
 declare -a gems=('bundler' 'tmuxinator' 'zeus')
 echo_update "Ruby gems ($gems)"
