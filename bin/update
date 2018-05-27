@@ -27,6 +27,8 @@ asdf list ruby $1 | while read ruby_version; do
   for gem in $gems; do
     $(asdf where ruby $ruby_version)/bin/gem install $gem
   done
+  echo_update "RubyGems for Ruby $ruby_version"
+  $(asdf where ruby $ruby_version)/bin/gem update --system
 done
 
 # https://stackoverflow.com/a/3452888
