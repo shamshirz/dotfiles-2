@@ -21,11 +21,6 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 # https://discussions.apple.com/thread/5038771?tstart=0
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# fzf (https://github.com/junegunn/fzf)
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
@@ -87,6 +82,11 @@ antigen theme agnoster
 
 # Tell antigen that you're done.
 antigen apply
+
+# fzf (https://github.com/junegunn/fzf)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Never leave tmux
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
