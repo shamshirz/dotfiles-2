@@ -36,6 +36,11 @@ export TMUXINATOR_CONFIG=~/dotfiles-local/tmuxinator
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# Use gpg conf files in dotfiles-local in addition to system ones
+# https://superuser.com/questions/962381/source-other-configuration-file-in-gpg-conf
+alias gpg='gpg --options ~/.dotfiles-local/gnupg/gpg.conf --options ~/.gnupg/gpg.conf'
+alias gpg-agent='gpg-agent --options ~/.dotfiles-local/gnupg/gpg.conf --options ~/.gnupg/gpg.conf'
+
 # Postgres creds for AK Elixir apps
 export POSTGRES_USER=rjdellecese
 export POSTGRES_PASSWORD=''
