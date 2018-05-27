@@ -55,15 +55,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Tab completion for mosh
 compdef mosh=ssh
 
-# Never leave tmux
-_not_inside_tmux() { [[ -z "$TMUX" ]] }
-
-ensure_tmux_is_running() {
-  if _not_inside_tmux; then
-    tat
-  fi
-}
-
+# NOTE: Antigen stuff must go at the end
 source ~/dotfiles-local/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
@@ -95,6 +87,15 @@ antigen theme agnoster
 
 # Tell antigen that you're done.
 antigen apply
+
+# Never leave tmux
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
 
 # NOTE: I think this needs to be called after everything else!
 ensure_tmux_is_running
