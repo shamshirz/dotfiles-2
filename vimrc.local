@@ -127,3 +127,6 @@ augroup dirvish_config
   " Maintain fzf Ctrl-P functionality in Dirvish buffers
   autocmd FileType dirvish nnoremap <silent><buffer> <C-p> :Files<CR>
 augroup END
+
+" Ensure compatibility with vim-fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
