@@ -130,3 +130,5 @@ augroup END
 
 " Ensure compatibility with vim-fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+let g:slime_target = "tmux"
