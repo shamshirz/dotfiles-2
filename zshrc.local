@@ -50,6 +50,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Tab completion for mosh
 compdef mosh=ssh
 
+# Use fasd
+eval "$(fasd --init auto)"
+
 # NOTE: Antigen stuff must go at the end
 source ~/dotfiles-local/antigen/antigen.zsh
 

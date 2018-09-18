@@ -38,12 +38,8 @@ windows:
       # synchronize: after
       panes:
         - nvim .
-  - terminal:
-      panes:
-        -
   - server:
       layout: even-horizontal
       panes:
-        - if [ -e .zeus.sock ]; then rm .zeus.sock && zeus start; else zeus start; fi
-        - sleep 1 && zeus server -p 3003
+        - be rails server -p 3003
   # - logs: tail -f log/development.log

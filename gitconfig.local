@@ -31,7 +31,10 @@
   cmsg = commit -m
   co = checkout
   com = checkout master
-  coem = checkout eligibility-master count = shortlog -sn cp = cherry-pick
+  cod = checkout develop
+  coem = checkout eligibility-master
+  count = shortlog -sn
+  cp = cherry-pick
   cpa = cherry-pick --abort
   cpc = cherry-pick --continue
   cs = commit -S
@@ -39,6 +42,7 @@
   d = diff
   dca = diff --cached
   dm = diff master...HEAD
+  dod = diff origin/develop...HEAD
   dom = diff origin/master...HEAD
   dt = diff-tree --no-commit-id --name-only -r
   dw = diff --word-diff
@@ -64,6 +68,7 @@
 
   m = merge
   ma = merge --abort
+  mod = merge origin/develop
   mom = merge origin/master
   mt = mergetool --no-prompt
   mtvim = mergetool --no-prompt --tool=vimdiff
@@ -81,8 +86,10 @@
   rba = rebase --abort
   rbc = rebase --continue
   rbi = rebase -i
+  rbiod = rebase -i origin/develop
   rbiom = rebase -i origin/master
   rbm = rebase master
+  rbod = rebase origin/develop
   rbom = rebase origin/master
   rbs = rebase --skip
   rh = reset HEAD

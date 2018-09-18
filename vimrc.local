@@ -132,3 +132,6 @@ augroup END
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 let g:slime_target = "tmux"
+
+let g:mix_format_on_save = 1
+autocmd FileType elixir setlocal textwidth=98
