@@ -12,6 +12,7 @@ if type nvim > /dev/null 2>&1; then
   alias v=nvim
 fi
 
+# TODO: Move to Lingon?
 # Set keyrepeat values. Ideally this only needs to be run upon setting up a new
 # machine... or only once upon each login?
 defaults write -g InitialKeyRepeat -int 13 # normal minimum is 15 (225 ms)
@@ -85,6 +86,9 @@ antigen theme agnoster
 
 # Tell antigen that you're done.
 antigen apply
+
+# Add newline to zsh prompt (https://unix.stackexchange.com/a/126316)
+export PS1="$PS1"$'\n'
 
 # fzf (https://github.com/junegunn/fzf)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
