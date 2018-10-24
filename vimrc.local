@@ -76,7 +76,9 @@ set grepprg=rg\ --color=never
 
 let g:ackprg = 'rg --vimgrep --smart-case'
 nnoremap \ :Ack!<SPACE>
-nnoremap <C-p> :Files<CR>
+" Added sh*t to end of mapping to fix offset issue, per
+" https://github.com/junegunn/fzf.vim/issues/385#issuecomment-418922152
+nnoremap <C-p> :Files<CR><C-\><C-n>0i
 
 " Enable command history, as with Ctrl-P Vim plugin
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -125,7 +127,7 @@ noremap <silent> cP :let @+=expand("%:p")<CR>
 
 augroup dirvish_config
   " Maintain fzf Ctrl-P functionality in Dirvish buffers
-  autocmd FileType dirvish nnoremap <silent><buffer> <C-p> :Files<CR>
+  autocmd FileType dirvish nnoremap <silent><buffer> <C-p> :Files<CR><C-\><C-n>0i
 augroup END
 
 " Ensure compatibility with vim-fugitive
