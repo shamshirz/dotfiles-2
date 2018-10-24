@@ -63,11 +63,9 @@ brew "mysql@5.6"
 brew "neovim"
 brew "pandoc"
 brew "perl"
-brew "phantomjs"
 brew "pinentry-mac"
 brew "postgresql", restart_service: true
 brew "pwgen"
-brew "qt@5.5", link: true
 brew "reattach-to-user-namespace"
 brew "redis", restart_service: true
 brew "ripgrep"
