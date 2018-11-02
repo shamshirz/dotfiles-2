@@ -117,6 +117,13 @@ augroup END
 
 let g:airline#extensions#ale#enabled = 1
 
+highlight ALEWarningSign ctermbg=black
+highlight ALEErrorSign ctermbg=black
+highlight ALEWarningSign ctermfg=magenta
+highlight ALEErrorSign ctermfg=red
+
+nmap <leader>w <Plug>(ale_detail)
+
 " Set soft tabs to 4 spaces in Elm buffers
 autocmd FileType elm setlocal tabstop=4 shiftwidth=4
 
