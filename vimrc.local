@@ -106,6 +106,15 @@ set mouse=a
 set inccommand=split
 
 " ALE options
+silent! augroup! ale
+
+augroup ale
+  autocmd!
+
+  set updatetime&
+  unlet g:ale_lint_on_text_changed
+augroup END
+
 let g:airline#extensions#ale#enabled = 1
 
 " Set soft tabs to 4 spaces in Elm buffers
