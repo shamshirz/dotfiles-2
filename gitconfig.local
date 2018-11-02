@@ -129,7 +129,7 @@
   vdf = difftool
 
   wch = whatchanged -p --abbrev-commit --pretty=medium
-  wip = "!git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m '--wip-- [no ci]'"
+  wip = "!git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m '[no ci] --wip--'"
 [core]
   editor = nvim
   pager = "diff-so-fancy | less --tabs=4 -RFX"
