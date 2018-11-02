@@ -125,7 +125,8 @@ highlight ALEErrorSign ctermfg=red
 nmap <leader>w <Plug>(ale_detail)
 
 " Set soft tabs to 4 spaces in Elm buffers
-autocmd FileType elm setlocal tabstop=4 shiftwidth=4
+" And don't wrap text
+autocmd FileType elm setlocal tabstop=4 shiftwidth=4 wrapmargin=0 textwidth=0
 
 " Clear search highlighting
 nnoremap <Leader>n :noh<CR>
