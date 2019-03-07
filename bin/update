@@ -1,53 +1,55 @@
 #!/bin/zsh
 
-echo_update() {
-  echo "💻  --> Updating $1..."
-}
+{
+  echo_update() {
+    echo "💻  --> Updating $1..."
+  }
 
-if [ ! -e ~/dotfiles-local/Brewfile ]; then
-  touch ~/dotfiles-local/Brewfile
-fi
+  if [ ! -e ~/dotfiles-local/Brewfile ]; then
+    touch ~/dotfiles-local/Brewfile
+  fi
 
-echo_update 'Antigen'
-(cd ~/dotfiles-local/antigen && exec git pull)
+  echo_update 'Antigen'
+  (cd ~/dotfiles-local/antigen && exec git pull)
 
-echo_update 'Homebrew packages'
-brew upgrade
-echo '💻  --> Dumping to Brewfile...'
-(cd ~/dotfiles-local && exec brew bundle dump --force)
+  echo_update 'Homebrew packages'
+  brew upgrade
+  echo '💻  --> Dumping to Brewfile...'
+  (cd ~/dotfiles-local && exec brew bundle dump --force)
 
-echo_update 'asdf and asdf plugins'
-asdf update
-asdf plugin-update --all
+  echo_update 'asdf and asdf plugins'
+  asdf update
+  asdf plugin-update --all
 
-declare -a gems=('bundler' 'tmuxinator' 'zeus')
-echo_update "Ruby gems ($gems)"
-asdf list ruby $1 | while read ruby_version; do
-  echo_update "Ruby $ruby_version gems"
-  for gem in $gems; do
-    $(asdf where ruby $ruby_version)/bin/gem install $gem
+  declare -a gems=('bundler' 'hookup' 'tmuxinator' 'zeus')
+  echo_update "Ruby gems ($gems)"
+  asdf list ruby $1 | while read ruby_version; do
+    echo_update "Ruby $ruby_version gems"
+    for gem in $gems; do
+      $(asdf where ruby $ruby_version)/bin/gem install $gem
+    done
+    echo_update "RubyGems for Ruby $ruby_version"
+    $(asdf where ruby $ruby_version)/bin/gem update --system
   done
-  echo_update "RubyGems for Ruby $ruby_version"
-  $(asdf where ruby $ruby_version)/bin/gem update --system
-done
 
-# https://stackoverflow.com/a/3452888
-pip_upgrade() {
-  pip$1 list --outdated --format=freeze |
-  grep -v '^\-e' |
-  cut -d = -f 1  |
-  xargs -n1 pip$1 install -U
-}
+  # https://stackoverflow.com/a/3452888
+  pip_upgrade() {
+    pip$1 list --outdated --format=freeze |
+    grep -v '^\-e' |
+    cut -d = -f 1  |
+    xargs -n1 pip$1 install -U
+  }
 
-echo_update 'Python packages'
-for i in {2..3}; do
-  echo_update "Python $i packages"
-  pip_upgrade $i
-done
+  echo_update 'Python packages'
+  for i in {2..3}; do
+    echo_update "Python $i packages"
+    pip_upgrade $i
+  done
 
-echo_update 'npm packages'
-npm update -g
+  echo_update 'npm packages'
+  npm update -g
 
-echo_update 'Rust nightly'
-asdf uninstall rust nightly
-asdf install rust nightly
+  echo_update 'Rust nightly'
+  asdf uninstall rust nightly
+  asdf install rust nightly
+} 2>&1 | tee ~/dotfiles-local/update.log # https://stackoverflow.com/a/7219252

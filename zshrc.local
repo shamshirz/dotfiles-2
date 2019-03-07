@@ -22,11 +22,10 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 # https://discussions.apple.com/thread/5038771?tstart=0
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
-
 # https://github.com/tmuxinator/tmuxinator/pull/511
 export TMUXINATOR_CONFIG=~/dotfiles-local/tmuxinator
+
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # https://github.com/pstadler/keybase-gpg-github#optional-setting-up-tty
 GPG_TTY=$(tty)
@@ -34,8 +33,8 @@ export GPG_TTY
 
 # Use gpg conf files in dotfiles-local in addition to system ones
 # https://superuser.com/questions/962381/source-other-configuration-file-in-gpg-conf
-alias gpg='gpg --options ~/.dotfiles-local/gnupg/gpg.conf --options ~/.gnupg/gpg.conf'
-alias gpg-agent='gpg-agent --options ~/.dotfiles-local/gnupg/gpg.conf --options ~/.gnupg/gpg.conf'
+alias gpg='gpg --options ~/.gnupg/gpg.conf'
+alias gpg-agent='gpg-agent --options ~/.gnupg/gpg.conf'
 
 # Postgres creds for AK Elixir apps
 export POSTGRES_USER=rjdellecese
@@ -72,6 +71,7 @@ antigen bundles <<EOBUNDLES
   brew
 
   # Build tool bundles
+  docker
   heroku
 
   # Other bundles

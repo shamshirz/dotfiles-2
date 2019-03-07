@@ -155,3 +155,10 @@ let g:slime_target = "tmux"
 " Elixir formatting
 let g:mix_format_on_save = 1
 autocmd FileType elixir setlocal textwidth=98
+
+" Ensure per-file tests work in Elixir umbrella apps by using absolute paths
+" https://github.com/janko-m/vim-test/issues/136
+let test#filename_modifier = ":p"
+
+" Use zsh (my default terminal) as the default terminal in nvim
+set shell=/bin/zsh
