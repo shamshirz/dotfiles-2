@@ -7,11 +7,13 @@ bind -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
 bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
 bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
-set-option -g status-keys "emacs"
-
 set-option -g status-left-length 50
+set-option -g status-right-length 50
 
-set-option -g status-right " #(battery -te)  #(date '+%a, %b %d - %I:%M') "
+set -g status-bg colour239 # Corresponds with https://github.com/sonph/onehalf/blob/408104a30ae4f220096e591350a72e60cc15f9b3/vim/colors/onehalfdark.vim#L39
+set -g status-fg white
+
+set-option -g status-right "#{cpu_fg_color} {#{cpu_percentage}} #{cpu_icon} #(battery -te)  #(date '+%a, %b %d - %I:%M %p') "
 
 bind-key - split-window -v  -c '#{pane_current_path}'
 bind-key \ split-window -h  -c '#{pane_current_path}'
@@ -46,24 +48,49 @@ bind-key j command-prompt -p "join pane from: "  "join-pane -h -s '%%'"
 
 bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session'
 
-# No more slow escape in Neovim!
-set -sg escape-time 20
-
-# Ensure system clipboard works in Neovim
-# Adapted from http://stackoverflow.com/a/39741226/4413082
-set -g default-shell $SHELL
-set -g default-command "reattach-to-user-namespace -l $SHELL"
-
 # gitsh "git drawer"
-bind-key g split-window -h -p 50 -c '#{pane_current_path}' 'gitsh --git $(which hub)'
+bind-key g split-window -h -p 30 -c '#{pane_current_path}' 'gitsh --git $(which hub)'
 
 # Set root directory for session to current pane path
 bind-key e attach-session -c "#{pane_current_path}" \; display-message "Set session path to #{pane_current_path}"
 
 # Unbind default bind key.
 unbind C-b
-# Set prefix to C-s (the default in these dotfiles is to set prefix2 to this.
+# Set prefix to C-s (the default in these dotfiles is to set prefix2 to this).
 set -g prefix C-s
+
+bind-key s run "tmux split-window -l 12 \"zsh -cif 'source ~/.tmux-scripts/fzf_switch_session; fzf_switch_session'\""
+bind-key p run "tmux split-window -l 12 \"zsh -cif 'source ~/.tmux-scripts/fzf_switch_pane; fzf_switch_pane'\""
 
 # Use da mouse for scrolling 'n stuff
 set -g mouse on
+
+# tpm--tmux plugin manager
+# List of plugins
+set -g @tpm_plugins ' \
+  tmux-plugins/tmux-continuum \
+  tmux-plugins/tmux-copycat \
+  tmux-plugins/tmux-cpu \
+  tmux-plugins/tmux-open \
+  tmux-plugins/tmux-resurrect \
+  tmux-plugins/tmux-sensible \
+  tmux-plugins/tmux-urlview \
+  tmux-plugins/tpm \
+'
+
+# Resurrect nvim sessions from the grave!
+set -g @resurrect-strategy-nvim 'session'
+set -g @resurrect-save-shell-history 'off'
+set -g @resurrect-capture-pane-contents 'on'
+
+# Start tmux automatically when computer is booted
+# https://github.com/tmux-plugins/tmux-continuum/blob/master/docs/automatic_start.md
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'iterm,fullscreen'
+
+# Last saved environment is automatically restored when tmux is started.
+# https://github.com/tmux-plugins/tmux-continuum#automatic-restore
+set -g @continuum-restore 'on'
+
+# Initialize tmux plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

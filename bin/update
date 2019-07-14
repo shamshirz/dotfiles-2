@@ -9,19 +9,15 @@
     touch ~/dotfiles-local/Brewfile
   fi
 
-  echo_update 'Antigen'
-  (cd ~/dotfiles-local/antigen && exec git pull)
-
   echo_update 'Homebrew packages'
   brew upgrade
   echo '💻  --> Dumping to Brewfile...'
   (cd ~/dotfiles-local && exec brew bundle dump --force)
 
   echo_update 'asdf and asdf plugins'
-  asdf update
   asdf plugin-update --all
 
-  declare -a gems=('bundler' 'hookup' 'tmuxinator' 'zeus')
+  declare -a gems=('neovim')
   echo_update "Ruby gems ($gems)"
   asdf list ruby $1 | while read ruby_version; do
     echo_update "Ruby $ruby_version gems"
@@ -48,8 +44,4 @@
 
   echo_update 'npm packages'
   npm update -g
-
-  echo_update 'Rust nightly'
-  asdf uninstall rust nightly
-  asdf install rust nightly
 } 2>&1 | tee ~/dotfiles-local/update.log # https://stackoverflow.com/a/7219252

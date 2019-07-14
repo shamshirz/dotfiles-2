@@ -1,16 +1,8 @@
-# Tmuxinator
-source ~/.bin/tmuxinator.zsh
-
 # Overwrite zsh/configs/editor.zsh in thoughtbot/dotfiles
 export VISUAL=nvim
 export EDITOR=$VISUAL
-
-# Use nvim if it's installed
-if type nvim > /dev/null 2>&1; then
-  alias vim=nvim
-  alias vi=nvim
-  alias v=nvim
-fi
+# Force emacs bindings in terminal!
+bindkey -e
 
 # TODO: Move to Lingon?
 # Set keyrepeat values. Ideally this only needs to be run upon setting up a new
@@ -22,78 +14,49 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 # https://discussions.apple.com/thread/5038771?tstart=0
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# https://github.com/tmuxinator/tmuxinator/pull/511
-export TMUXINATOR_CONFIG=~/dotfiles-local/tmuxinator
-
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-
 # https://github.com/pstadler/keybase-gpg-github#optional-setting-up-tty
 GPG_TTY=$(tty)
 export GPG_TTY
 
-# Use gpg conf files in dotfiles-local in addition to system ones
-# https://superuser.com/questions/962381/source-other-configuration-file-in-gpg-conf
-alias gpg='gpg --options ~/.gnupg/gpg.conf'
-alias gpg-agent='gpg-agent --options ~/.gnupg/gpg.conf'
-
-# Postgres creds for AK Elixir apps
-export POSTGRES_USER=rjdellecese
-export POSTGRES_PASSWORD=''
+# More colors!
+export TERM=xterm-256color
 
 # Enable Elixir shell history globally
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# Added by asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
-# Tab completion for mosh
-compdef mosh=ssh
-
 # Use fasd
 eval "$(fasd --init auto)"
 
-# NOTE: Antigen stuff must go at the end
-source ~/dotfiles-local/antigen/antigen.zsh
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundles <<EOBUNDLES
-  # Ruby bundles
-  bundler
-  ruby
-  rake
-  zeus
+# asdf
+source /usr/local/opt/asdf/asdf.sh
+source /usr/local/etc/bash_completion.d
 
-  # Mac OS bundles
-  brew
-
-  # Build tool bundles
-  docker
-  heroku
-
-  # Other bundles
-  jump
-EOBUNDLES
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Load the theme.
-antigen theme agnoster
-
-# Tell antigen that you're done.
-antigen apply
-
-# Add newline to zsh prompt (https://unix.stackexchange.com/a/126316)
-export PS1="$PS1"$'\n'
+# Zsh syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fzf (https://github.com/junegunn/fzf)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# pure prompt (https://github.com/sindresorhus/pure)
+autoload -U promptinit; promptinit
+prompt pure
+
+source ~/.secrets
 
 # Never leave tmux
 _not_inside_tmux() { [[ -z "$TMUX" ]] }

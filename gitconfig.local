@@ -133,6 +133,8 @@
 [core]
   editor = nvim
   pager = "diff-so-fancy | less --tabs=4 -RFX"
+[pager]
+  diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [diff]
   tool = vimdiff
 [commit]
@@ -143,7 +145,7 @@
   ff = true
 [user]
   name = RJ Dellecese
-  email = rj.dellecese@annkissam.com
+  email = rjdellecese@gmail.com
   signingkey = 87BF99275C7F59C3
 [gitsh]
   noGreeting = true
@@ -152,3 +154,5 @@
   default = cyan
   untracked = yellow
   modified = red
+[credential]
+  helper = osxkeychain
