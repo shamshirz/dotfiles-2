@@ -23,7 +23,7 @@ brew "readline"
 brew "unixodbc"
 brew "asdf"
 brew "bat"
-brew "ghc", link: false
+brew "ghc"
 brew "cabal-install"
 brew "fontconfig"
 brew "gettext"
@@ -51,7 +51,7 @@ brew "fzf"
 brew "gist"
 brew "git"
 brew "gnu-getopt"
-brew "gnupg", link: false
+brew "gnupg"
 brew "go"
 brew "graphviz"
 brew "hub"
@@ -84,6 +84,7 @@ brew "ruby"
 brew "smlnj"
 brew "spark"
 brew "terminal-notifier"
+brew "tig"
 brew "tmux"
 brew "unzip"
 brew "urlview"
@@ -104,12 +105,14 @@ cask "1password-cli"
 cask "beardedspice"
 cask "dash"
 cask "firefox"
+cask "font-fira-mono"
 cask "font-meslo-for-powerline"
 cask "godot"
 cask "graphiql"
 cask "java"
 cask "keepingyouawake"
 cask "keybase"
+cask "lingon-x"
 cask "macdown"
 cask "minikube"
 cask "ngrok"
@@ -117,8 +120,10 @@ cask "psequel"
 cask "spotify"
 cask "visual-studio-code"
 mas "Amphetamine", id: 937984704
+mas "Day One", id: 1055511498
 mas "Gapplin", id: 768053424
 mas "GarageBand", id: 682658836
+mas "iA Writer", id: 775737590
 mas "iMazing HEIC Converter", id: 1292198261
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694

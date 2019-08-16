@@ -58,7 +58,7 @@
 			<key>absinthe</key>
 			<dict>
 				<key>date</key>
-				<date>2019-06-25T15:37:06Z</date>
+				<date>2019-08-06T14:06:42Z</date>
 				<key>entry</key>
 				<dict>
 					<key>name</key>
@@ -69,10 +69,24 @@
 					<string>absinthe</string>
 				</dict>
 			</dict>
+			<key>absinthe_relay</key>
+			<dict>
+				<key>date</key>
+				<date>2019-08-15T12:58:32Z</date>
+				<key>entry</key>
+				<dict>
+					<key>name</key>
+					<string>absinthe_relay</string>
+					<key>platform</key>
+					<string>hex</string>
+					<key>uniqueIdentifier</key>
+					<string>absinthe_relay</string>
+				</dict>
+			</dict>
 			<key>bamboo</key>
 			<dict>
 				<key>date</key>
-				<date>2019-06-12T16:34:56Z</date>
+				<date>2019-08-04T00:44:03Z</date>
 				<key>entry</key>
 				<dict>
 					<key>name</key>
@@ -95,6 +109,20 @@
 					<string>hex</string>
 					<key>uniqueIdentifier</key>
 					<string>codepagex</string>
+				</dict>
+			</dict>
+			<key>dataloader</key>
+			<dict>
+				<key>date</key>
+				<date>2019-07-30T15:54:13Z</date>
+				<key>entry</key>
+				<dict>
+					<key>name</key>
+					<string>dataloader</string>
+					<key>platform</key>
+					<string>hex</string>
+					<key>uniqueIdentifier</key>
+					<string>dataloader</string>
 				</dict>
 			</dict>
 			<key>decimal</key>
@@ -153,6 +181,20 @@
 					<string>ecto_sql</string>
 				</dict>
 			</dict>
+			<key>mox</key>
+			<dict>
+				<key>date</key>
+				<date>2019-07-23T21:59:31Z</date>
+				<key>entry</key>
+				<dict>
+					<key>name</key>
+					<string>mox</string>
+					<key>platform</key>
+					<string>hex</string>
+					<key>uniqueIdentifier</key>
+					<string>mox</string>
+				</dict>
+			</dict>
 			<key>number</key>
 			<dict>
 				<key>date</key>
@@ -184,7 +226,7 @@
 			<key>plug</key>
 			<dict>
 				<key>date</key>
-				<date>2019-06-25T17:32:28Z</date>
+				<date>2019-07-28T18:50:46Z</date>
 				<key>entry</key>
 				<dict>
 					<key>name</key>
@@ -364,6 +406,11 @@
 				<key>date</key>
 				<date>2019-05-07T15:46:37Z</date>
 			</dict>
+			<key>http://kapeli.com/feeds/Jinja.xml</key>
+			<dict>
+				<key>date</key>
+				<date>2019-08-09T14:46:19Z</date>
+			</dict>
 			<key>http://kapeli.com/feeds/Man_Pages.xml</key>
 			<dict>
 				<key>date</key>
@@ -378,6 +425,16 @@
 			<dict>
 				<key>date</key>
 				<date>2019-05-27T02:46:35Z</date>
+			</dict>
+			<key>http://kapeli.com/feeds/Python_2.xml</key>
+			<dict>
+				<key>date</key>
+				<date>2019-08-09T14:46:18Z</date>
+			</dict>
+			<key>http://kapeli.com/feeds/Python_3.xml</key>
+			<dict>
+				<key>date</key>
+				<date>2019-08-09T14:46:19Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/SVG.xml</key>
 			<dict>
