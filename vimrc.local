@@ -162,9 +162,7 @@ function! RestoreSession()
   endif
 endfunction
 
-autocmd VimEnter *
-    \ nested call RestoreSession() |
-    \ :Obsession
+autocmd VimEnter * :Obsession
 
 " Vim Tagbar
 nmap <C-\> :TagbarToggle<CR>
