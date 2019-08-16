@@ -312,7 +312,6 @@ function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
 
-" Don't think these coc.nvim configurations are doing anything.
 let g:lightline = {
   \ 'colorscheme': 'onehalfdark',
   \ 'active': {
