@@ -28,6 +28,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rizzatti/dash.vim'
 Plug 'rust-lang/rust.vim'

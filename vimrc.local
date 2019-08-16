@@ -90,6 +90,9 @@ autocmd FileType dirvish call fugitive#detect(@%)
 set grepprg=rg\ --color=never
 
 nnoremap \ :Rg <cr>'
+
+let g:ackprg = 'rg --vimgrep --smart-case'
+
 " Added sh*t to end of mapping to fix offset issue, per
 " https://github.com/junegunn/fzf.vim/issues/385#issuecomment-418922152
 nnoremap <silent> <C-p> :Files<CR><C-\><C-n>0i
