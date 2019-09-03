@@ -97,6 +97,14 @@ let g:ackprg = 'rg --vimgrep --smart-case'
 " https://github.com/junegunn/fzf.vim/issues/385#issuecomment-418922152
 nnoremap <silent> <C-p> :Files<CR><C-\><C-n>0i
 
+" Prevents file names from being includes in full-text ripgrep search
+" https://github.com/junegunn/fzf/issues/1109#issuecomment-339983902
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \   <bang>0)
+
 let g:markdown_fenced_languages = ['elixir', 'elm', 'rust', 'vim']
 
 " Enable command history, as with Ctrl-P Vim plugin
