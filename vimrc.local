@@ -97,7 +97,7 @@ let g:ackprg = 'rg --vimgrep --smart-case'
 " https://github.com/junegunn/fzf.vim/issues/385#issuecomment-418922152
 nnoremap <silent> <C-p> :Files<CR><C-\><C-n>0i
 
-let g:markdown_fenced_languages = ['elixir', 'elm', 'vim']
+let g:markdown_fenced_languages = ['elixir', 'elm', 'rust', 'vim']
 
 " Enable command history, as with Ctrl-P Vim plugin
 let g:fzf_history_dir = '~/.local/share/fzf-history'
