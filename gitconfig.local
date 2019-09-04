@@ -68,6 +68,7 @@
 
   m = merge
   ma = merge --abort
+  mc = merge --continue
   mod = merge origin/develop
   mom = merge origin/master
   mt = mergetool --no-prompt
